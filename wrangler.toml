@@ -1,0 +1,12 @@
+name = "smokemap"
+main = "worker/src/index.js"
+compatibility_date = "2026-10-01"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "smokemap"
+database_id = "fa460e21-a6cf-41c7-a102-be81c3b45e2d"

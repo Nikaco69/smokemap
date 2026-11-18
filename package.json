@@ -1,0 +1,13 @@
+{
+  "name": "smokemap",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node worker/make-seed.js",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "4.156.0"
+  }
+}
