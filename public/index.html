@@ -4,6 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>煙位地圖</title>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icons/icon-192.png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#1d1b19">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="煙位地圖">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@400;600;800&display=swap">
 <style>
@@ -65,6 +73,8 @@ input[type=text],textarea{width:100%;font:inherit;padding:10px;border-radius:10p
 .pop .acts{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
 .pop button,.pop a.nav{flex:1;border:0;border-radius:8px;padding:7px;font:inherit;font-size:13px;cursor:pointer;text-align:center;text-decoration:none}
 .pop .ok{background:#2f8a5b;color:#fff}.pop .gone{background:#eee;color:#333}.pop a.nav{background:#1d1b19;color:#fff}
+.install{position:fixed;z-index:1050;left:12px;right:12px;top:calc(110px + env(safe-area-inset-top,0px));background:var(--panel);color:var(--fg);border-radius:14px;padding:10px 12px;box-shadow:0 4px 16px #0003;display:flex;gap:8px;align-items:center;font-size:14px;line-height:1.4}
+.install span{flex:1}
 .me-dot{width:16px;height:16px;border-radius:50%;background:#2a7de1;border:3px solid #fff;box-shadow:0 0 0 6px #2a7de133}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
@@ -115,6 +125,12 @@ input[type=text],textarea{width:100%;font:inherit;padding:10px;border-radius:10p
   <h2 id="askTitle"></h2>
   <p id="askBody"></p>
   <div class="row" id="askActs"></div>
+</div>
+
+<div class="install" id="install" hidden>
+  <span id="installText"></span>
+  <button type="button" class="chip" id="installBtn" hidden>安裝</button>
+  <button type="button" class="chip" id="installClose" aria-label="關閉">✕</button>
 </div>
 
 <div class="toast" id="toast" hidden></div>

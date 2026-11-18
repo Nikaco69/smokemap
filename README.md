@@ -4,6 +4,8 @@
 
 網址：https://smokemap.smokemap.workers.dev
 
+裝成 App：iPhone 用 Safari 開網址，撳「分享」→「加至主畫面」；Android 用 Chrome 開，撳「安裝」。
+
 ## 部署（Cloudflare Workers + D1）
 
 ```bash

@@ -261,3 +261,24 @@ if (navigator.geolocation) navigator.geolocation.watchPosition(p => {
 
 loadCommunity();
 locate().then(p => { if (p) loadCommunity(); });
+
+// ---- 安裝成 App（PWA）----
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(() => {});
+(() => {
+  const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  if (standalone || store('installDismissed')) return;
+  const box = $('#install'), text = $('#installText');
+  const close = () => { box.hidden = true; store('installDismissed', '1'); };
+  $('#installClose').onclick = close;
+  const ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  if (ios) {
+    text.textContent = '裝成 App：撳 Safari 底部「分享」⬆️，再揀「加至主畫面」。';
+    box.hidden = false;
+  }
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    text.textContent = '將煙位地圖裝落手機，開得快啲。';
+    $('#installBtn').hidden = false; box.hidden = false;
+    $('#installBtn').onclick = async () => { e.prompt(); await e.userChoice; close(); };
+  });
+})();
